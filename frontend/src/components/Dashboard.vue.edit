@@ -1,0 +1,23 @@
+          </div>
+
+          <!-- Match Type -->
+          <div class="space-y-2">
+            <label class="block text-sm font-semibold text-gray-700 flex items-center">
+              <svg class="w-4 h-4 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+              Match Type
+            </label>
+            <select 
+              v-model="editKeywordData.isContain" 
+              class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 transition-all duration-200 bg-white/80 backdrop-blur-sm"
+            >
+              <option :value="true">Contains (responds if message contains any keyword)</option>
+              <option :value="false">Exact Match (responds only to exact keyword matches)</option>
+            </select>
+            <div class="text-xs text-gray-500">
+              Choose how the bot should match keywords in messages
+            </div>
+          </div>
+
+          <!-- Message Type -->

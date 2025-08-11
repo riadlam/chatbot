@@ -1,0 +1,114 @@
+# Bot API Testing Commands for Postman
+
+## 1. Create a Shop First (if needed)
+curl -X POST http://localhost:8000/api/shops \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+    "name": "My Test Shop",
+    "phone_number": "+1234567890",
+    "email": "shop@example.com"
+  }'
+
+## 2. Create a Bot
+curl -X POST http://localhost:8000/api/shops/1/bots \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+    "bot_type": "customer-support",
+    "description": "Customer support bot for handling inquiries",
+    "status": "active"
+  }'
+
+## 3. Get All Bots for a Shop
+curl -X GET http://localhost:8000/api/shops/1/bots \
+  -H "Accept: application/json"
+
+## 4. Get Specific Bot
+curl -X GET http://localhost:8000/api/shops/1/bots/1 \
+  -H "Accept: application/json"
+
+## 5. Add Keyword to Bot
+curl -X POST http://localhost:8000/api/shops/1/bots/1/keywords \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+    "keyword": "help",
+    "response": "Hello! How can I assist you today? Please let me know what you need help with."
+  }'
+
+## 6. Get Bot Keywords
+curl -X GET http://localhost:8000/api/shops/1/bots/1/keywords \
+  -H "Accept: application/json"
+
+## 7. Remove Keyword from Bot
+curl -X DELETE http://localhost:8000/api/shops/1/bots/1/keywords \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+    "keyword": "help"
+  }'
+
+## 8. Add Message to Bot
+curl -X POST http://localhost:8000/api/shops/1/bots/1/messages \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+    "whatsapp_number": "+1234567890",
+    "customer_name": "John Doe",
+    "message_content": "Hello, I need help with my order",
+    "direction": "inbound",
+    "message_type": "text",
+    "is_bot_response": false
+  }'
+
+## 9. Get Bot Messages
+curl -X GET http://localhost:8000/api/shops/1/bots/1/messages \
+  -H "Accept: application/json"
+
+## 10. Toggle Bot Status
+curl -X POST http://localhost:8000/api/shops/1/bots/1/toggle-status \
+  -H "Accept: application/json"
+
+## 11. Update Bot
+curl -X PUT http://localhost:8000/api/shops/1/bots/1 \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+    "bot_type": "sales",
+    "description": "Updated description for sales bot",
+    "status": "inactive"
+  }'
+
+## 12. Delete Bot
+curl -X DELETE http://localhost:8000/api/shops/1/bots/1 \
+  -H "Accept: application/json"
+
+# Expected Bot Structure:
+{
+  "id": 1,
+  "shop_id": 1,
+  "bot_type": "customer-support",
+  "description": "Customer support bot for handling inquiries",
+  "status": "active",
+  "keywords": [
+    {
+      "keyword": "help",
+      "response": "Hello! How can I assist you today?",
+      "created_at": "2024-08-04T22:35:14.000000Z"
+    }
+  ],
+  "messages": [
+    {
+      "whatsapp_number": "+1234567890",
+      "customer_name": "John Doe",
+      "message_content": "Hello, I need help",
+      "direction": "inbound",
+      "message_type": "text",
+      "is_bot_response": false,
+      "created_at": "2024-08-04T22:35:14.000000Z"
+    }
+  ],
+  "created_at": "2024-08-04T22:35:14.000000Z",
+  "updated_at": "2024-08-04T22:35:14.000000Z"
+} 

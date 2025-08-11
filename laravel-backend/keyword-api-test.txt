@@ -1,0 +1,51 @@
+# Test Keyword API Endpoints
+
+# 1. First, get the user's shops to find shop ID
+curl -X GET "http://localhost:8000/api/shops" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json"
+
+# 2. Get bots for the shop to find bot ID
+curl -X GET "http://localhost:8000/api/shops/1/bots" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json"
+
+# 3. Add keywords to a bot (replace shop_id and bot_id with real values)
+curl -X POST "http://localhost:8000/api/shops/1/bots/1/keywords" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "keywords": ["hello", "hi", "help"],
+    "response": "Hello! How can I help you today?"
+  }'
+
+# 4. Get keywords for a bot
+curl -X GET "http://localhost:8000/api/shops/1/bots/1/keywords" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json"
+
+# 5. Remove a keyword from a bot
+curl -X DELETE "http://localhost:8000/api/shops/1/bots/1/keywords" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "keyword": "hello"
+  }'
+
+# 6. Add a message to a bot
+curl -X POST "http://localhost:8000/api/shops/1/bots/1/messages" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "whatsapp_number": "+1234567890",
+    "customer_name": "John Doe",
+    "message_content": "Hello, I need help",
+    "direction": "inbound",
+    "message_type": "text",
+    "is_bot_response": false
+  }'
+
+# 7. Get messages for a bot
+curl -X GET "http://localhost:8000/api/shops/1/bots/1/messages" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -H "Content-Type: application/json" 

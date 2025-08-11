@@ -1,0 +1,35 @@
+{
+  "name": "whatsapp-bot",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "bot-server": "node src/server.js",
+    "bot-dev": "nodemon src/server.js",
+    "start-all": "node start-services.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test-nodejs": "node test-nodejs-server.js",
+    "test-logging": "node test-with-logging.js",
+    "test-complete": "node test-complete-flow.js"
+  },
+  "keywords": ["whatsapp", "bot", "saas", "laravel"],
+  "author": "",
+  "license": "ISC",
+  "description": "SaaS WhatsApp Bot Platform with Laravel Backend",
+  "dependencies": {
+    "axios": "^1.11.0",
+    "express": "^5.1.0",
+    "fs-extra": "^11.3.0",
+    "qrcode": "^1.5.4",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.31.0",
+    "dotenv": "^16.4.5",
+    "cors": "^2.8.5",
+    "helmet": "^8.0.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

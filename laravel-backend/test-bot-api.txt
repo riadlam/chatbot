@@ -1,0 +1,52 @@
+# Test Bot Creation API with cURL
+
+# 1. First, create a shop
+curl -X POST http://localhost:8000/api/shops \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+    "name": "My Test Shop",
+    "phone_number": "+1234567890",
+    "email": "shop@example.com",
+    "description": "Test shop for bot creation"
+  }'
+
+# 2. Create a bot for the shop (replace SHOP_ID with the actual shop ID from step 1)
+curl -X POST http://localhost:8000/api/shops/1/bots \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+    "bot_type": "customer-support",
+    "description": "Customer support bot for handling inquiries",
+    "status": "active"
+  }'
+
+# 3. Get all bots for the shop
+curl -X GET http://localhost:8000/api/shops/1/bots \
+  -H "Accept: application/json"
+
+# 4. Add a keyword to the bot (replace BOT_ID with the actual bot ID from step 2)
+curl -X POST http://localhost:8000/api/shops/1/bots/1/keywords \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+    "keyword": "help",
+    "response": "Hello! How can I assist you today? Please let me know what you need help with."
+  }'
+
+# Expected Response for Bot Creation:
+# {
+#   "success": true,
+#   "message": "Bot created successfully",
+#   "data": {
+#     "id": 1,
+#     "shop_id": 1,
+#     "bot_type": "customer-support",
+#     "description": "Customer support bot for handling inquiries",
+#     "status": "active",
+#     "keywords": [],
+#     "messages": [],
+#     "created_at": "2024-08-04T22:47:52.000000Z",
+#     "updated_at": "2024-08-04T22:47:52.000000Z"
+#   }
+# } 

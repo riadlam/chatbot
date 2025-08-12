@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Proxy bot health check to Node.js service
+RewriteRule ^health$ http://127.0.0.1:3000/health [P,L]
+
+# Proxy bot API calls to Node.js service
+RewriteRule ^bot/(.*)$ http://127.0.0.1:3000/$1 [P,L]
+
+# Handle frontend routing if needed
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]

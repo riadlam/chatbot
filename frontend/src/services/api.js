@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create axios instance
 const api = axios.create({
-    baseURL: 'https://chatbot.soexplast.com/api',
+    baseURL: 'https://api.soexplast.com',
     headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',

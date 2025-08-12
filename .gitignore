@@ -22,6 +22,9 @@ dist/
 build/
 *.tgz
 
+# Allow .htaccess files in dist folders
+!**/.htaccess
+
 # Logs
 logs/
 *.log

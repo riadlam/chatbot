@@ -192,8 +192,8 @@ process.on('SIGTERM', async () => {
 // Start server
 app.listen(PORT, () => {
     console.log(`🚀 Bot Server running on port ${PORT}`);
-    console.log(`📊 Health check: http://localhost:${PORT}/health`);
-    console.log(`🤖 Bot start endpoint: http://localhost:${PORT}/api/bot/start`);
+    console.log(`📊 Health check: http://0.0.0.0:${PORT}/health`);
+    console.log(`🤖 Bot start endpoint: http://0.0.0.0:${PORT}/api/bot/start`);
 });
 
 module.exports = app; 

@@ -3,7 +3,7 @@ require('dotenv').config();
 module.exports = {
     // Laravel API Configuration
     laravel: {
-        baseUrl: process.env.LARAVEL_API_URL || 'http://197.140.142.101:8000',
+        baseUrl: process.env.LARAVEL_API_URL || 'http://197.140.142.101:8000/api',
         timeout: 10000,
     },
 

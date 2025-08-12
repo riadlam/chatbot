@@ -1753,8 +1753,8 @@
             <div v-if="selectedBotForQr?.status?.qr_code_available" class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
               <div class="w-48 h-48 mx-auto bg-gray-50 rounded-xl flex items-center justify-center relative">
                 <!-- Real QR Code -->
-                <img v-if="selectedBotForQr?.status?.qr_code_path && selectedBotForQr.status.qr_code_path.split('/').length > 2" 
-                     :src="`https://chatbot.soexplast.com/api/qr-code/${selectedBotForQr.status.qr_code_path.split('/')[2]}/qr.png`" 
+                <img v-if="selectedBotForQr?.status?.qr_code_path" 
+                     :src="`https://chatbot.soexplast.com/api/qr-code/${getSessionIdFromQrPath(selectedBotForQr.status.qr_code_path)}/qr.png`" 
                      alt="QR Code" 
                      class="w-44 h-44 object-contain"
                      @error="handleQrCodeError"
@@ -2299,6 +2299,16 @@ export default {
     }
   },
   methods: {
+    getSessionIdFromQrPath(qrPath) {
+      if (!qrPath) return null;
+      
+      // Extract session ID from path like "qr-codes/bot_4_1755039991/qr.png"
+      const parts = qrPath.split('/');
+      if (parts.length >= 2) {
+        return parts[1]; // Return the session ID part
+      }
+      return null;
+    },
     getCurrentPageTitle() {
       const item = this.navigationItems.find(item => item.name === this.activePage)
       return item ? item.label : 'Dashboard'

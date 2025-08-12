@@ -105,7 +105,7 @@ class BotStarter {
                     });
 
                     // Update Laravel API with QR code
-                    await this.updateQrCode(shopId, botId, qr, `storage/qr-codes/${sessionId}/qr.png`);
+                    await this.updateQrCode(shopId, botId, qr, `qr-codes/${sessionId}/qr.png`);
                     
                     this.log(`✅ [QR_EVENT] QR Code saved successfully`, 'INFO', botId);
                     

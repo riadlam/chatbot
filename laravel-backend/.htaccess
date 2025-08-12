@@ -7,7 +7,11 @@ RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 # Serve storage files directly (before routing to public/index.php)
 RewriteCond %{REQUEST_URI} ^/storage/
 RewriteCond %{REQUEST_FILENAME} -f
-RewriteRule ^(.*)$ $1 [L]
+RewriteRule ^storage/(.*)$ storage/$1 [L]
+
+# Alternative: Map storage to actual directory
+RewriteCond %{REQUEST_URI} ^/storage/
+RewriteRule ^storage/(.*)$ /home/soexplast/public_html/chatwp/laravel-backend/storage/$1 [L]
 
 # If the request is not for a file or directory, redirect to public/index.php
 RewriteCond %{REQUEST_FILENAME} !-f

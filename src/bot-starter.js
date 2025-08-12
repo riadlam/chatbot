@@ -6,7 +6,7 @@ const path = require('path');
 
 class BotStarter {
     constructor() {
-        this.apiBaseUrl = 'https://chatbot.soexplast.com/api';
+        this.apiBaseUrl = 'http://197.140.142.101:8000/api';
         this.activeBots = new Map();
         this.qrGenerationTimeouts = new Map();
         this.maxQrGenerationTime = 30000; // 30 seconds timeout

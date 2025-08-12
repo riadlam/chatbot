@@ -36,7 +36,7 @@ async function testKeywords() {
         
         for (const keywordData of testKeywords) {
             try {
-                const response = await axios.post('http://localhost:8000/api/webhook/keyword', keywordData, {
+                const response = await axios.post('https://chatbot.soexplast.com/api/webhook/keyword', keywordData, {
                     timeout: 10000
                 });
                 
@@ -50,7 +50,7 @@ async function testKeywords() {
         console.log('\n📤 Test 2: Fetching keywords from webhook...');
         
         try {
-            const keywordsResponse = await axios.get('http://localhost:8000/api/webhook/shop-keywords/1', {
+            const keywordsResponse = await axios.get('https://chatbot.soexplast.com/api/webhook/shop-keywords/1', {
                 timeout: 10000
             });
             

@@ -36,7 +36,7 @@ async function addTestBotData() {
             try {
                 console.log(`Adding message: ${messageData.message.text.substring(0, 50)}...`);
                 
-                const response = await axios.post('http://localhost:8000/api/shops/1/bots/1/messages', messageData, {
+                const response = await axios.post('https://chatbot.soexplast.com/api/shops/1/bots/1/messages', messageData, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'

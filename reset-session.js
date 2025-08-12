@@ -5,7 +5,7 @@ async function resetSession() {
     
     try {
         // Reset session status in Laravel
-        const response = await axios.post('http://localhost:8000/api/webhook/reset-session', {
+        const response = await axios.post('https://chatbot.soexplast.com/api/webhook/reset-session', {
             shop_id: 2
         });
         

@@ -23,7 +23,7 @@ async function testMessageSend() {
             is_bot_response: false
         };
         
-        const messageResponse = await axios.post('http://localhost:8000/api/webhook/message', messageData);
+        const messageResponse = await axios.post('https://chatbot.soexplast.com/api/webhook/message', messageData);
         console.log('✅ Message stored in database:', messageResponse.data);
         
         // 3. Check if bot processes the message

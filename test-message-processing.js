@@ -6,7 +6,7 @@ async function testMessageProcessing() {
     try {
         // Test 1: Get keywords for bot 2
         console.log('1️⃣ Getting keywords for bot 2...');
-        const keywordsResponse = await axios.get('http://localhost:8000/api/webhook/bot-keywords/2', {
+        const keywordsResponse = await axios.get('https://chatbot.soexplast.com/api/webhook/bot-keywords/2', {
             timeout: 10000
         });
         

@@ -6,7 +6,7 @@ async function testLaravelBotStart() {
     try {
         // Test 1: Call Laravel bot start endpoint
         console.log('1️⃣ Calling Laravel bot start endpoint...');
-        const startResponse = await axios.post('http://localhost:8000/api/shops/1/bots/1/start', {}, {
+        const startResponse = await axios.post('https://chatbot.soexplast.com/api/shops/1/bots/1/start', {}, {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -36,7 +36,7 @@ async function testLaravelBotStart() {
         console.log('\n4️⃣ Checking bot status...');
         await new Promise(resolve => setTimeout(resolve, 2000));
         
-        const statusResponse = await axios.get('http://localhost:8000/api/shops/1/bots/1/status', {
+        const statusResponse = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/1/status', {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'

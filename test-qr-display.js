@@ -6,7 +6,7 @@ async function testQrDisplay() {
     try {
         // Test 1: Get bot status from Laravel
         console.log('1️⃣ Getting bot status from Laravel...');
-        const statusResponse = await axios.get('http://localhost:8000/api/shops/1/bots/1/status', {
+        const statusResponse = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/1/status', {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -31,7 +31,7 @@ async function testQrDisplay() {
                 // Frontend URL construction logic
                 const qrPathParts = status.qr_code_path.split('/');
                 const sessionId = qrPathParts[2]; // This is what frontend does
-                const frontendUrl = `http://localhost:8000/api/qr-code/${sessionId}/qr.png`;
+                const frontendUrl = `https://chatbot.soexplast.com/api/qr-code/${sessionId}/qr.png`;
                 
                 console.log('- Original QR Path:', status.qr_code_path);
                 console.log('- Path Parts:', qrPathParts);
@@ -56,7 +56,7 @@ async function testQrDisplay() {
                 
                 // Test 4: Test the actual file path
                 console.log('\n4️⃣ Testing actual file path...');
-                const actualUrl = `http://localhost:8000/api/qr-code/bot_1_1754524728295/qr.png`;
+                const actualUrl = `https://chatbot.soexplast.com/api/qr-code/bot_1_1754524728295/qr.png`;
                 try {
                     const actualResponse = await axios.get(actualUrl, {
                         responseType: 'arraybuffer'

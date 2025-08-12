@@ -6,7 +6,7 @@ async function testAuth() {
     try {
         // Step 1: Register a test user
         console.log('1️⃣ Registering test user...');
-        const registerResponse = await axios.post('http://localhost:8000/api/auth/register', {
+        const registerResponse = await axios.post('https://chatbot.soexplast.com/api/auth/register', {
             fullName: 'Test User',
             email: 'test@example.com',
             password: 'password123',
@@ -24,7 +24,7 @@ async function testAuth() {
         
         // Step 2: Login to get token
         console.log('\n2️⃣ Logging in to get token...');
-        const loginResponse = await axios.post('http://localhost:8000/api/auth/login', {
+        const loginResponse = await axios.post('https://chatbot.soexplast.com/api/auth/login', {
             email: 'test@example.com',
             password: 'password123'
         }, {
@@ -41,7 +41,7 @@ async function testAuth() {
         
         // Step 3: Test authenticated endpoint
         console.log('\n3️⃣ Testing authenticated endpoint...');
-        const authResponse = await axios.get('http://localhost:8000/api/auth/user', {
+        const authResponse = await axios.get('https://chatbot.soexplast.com/api/auth/user', {
             timeout: 10000,
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -54,7 +54,7 @@ async function testAuth() {
         
         // Step 4: Test bot endpoint with authentication
         console.log('\n4️⃣ Testing bot endpoint with authentication...');
-        const botResponse = await axios.get('http://localhost:8000/api/shops/1/bots/1', {
+        const botResponse = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/1', {
             timeout: 10000,
             headers: {
                 'Authorization': `Bearer ${token}`,

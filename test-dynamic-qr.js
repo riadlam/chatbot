@@ -19,12 +19,12 @@ async function testDynamicQR() {
 
         // 3. Check bot status via API
         console.log('\n3️⃣ Checking bot status via API...');
-        const statusResponse = await axios.get('http://localhost:8000/api/shops/1/bots/1/status');
+        const statusResponse = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/1/status');
         console.log('Bot status:', statusResponse.data);
 
         // 4. Get QR code via API
         console.log('\n4️⃣ Getting QR code via API...');
-        const qrResponse = await axios.get('http://localhost:8000/api/shops/1/bots/1/qr-code');
+        const qrResponse = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/1/qr-code');
         console.log('QR code response:', qrResponse.data);
 
         console.log('\n✅ Test completed successfully!');

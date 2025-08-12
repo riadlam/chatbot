@@ -13,14 +13,14 @@ async function testBotDebug() {
         
         // 2. Check Laravel session status
         console.log('\n2️⃣ Checking Laravel session status...');
-        const sessionResponse = await axios.get('http://localhost:8000/api/webhook/session-status/2', {
+        const sessionResponse = await axios.get('https://chatbot.soexplast.com/api/webhook/session-status/2', {
             timeout: 5000
         });
         console.log('✅ Session status:', sessionResponse.data);
         
         // 3. Test message processing endpoint
         console.log('\n3️⃣ Testing message processing...');
-        const messageResponse = await axios.post('http://localhost:8000/api/webhook/message', {
+        const messageResponse = await axios.post('https://chatbot.soexplast.com/api/webhook/message', {
             shop_id: 2,
             whatsapp_number: '1234567890',
             customer_name: 'Test User',

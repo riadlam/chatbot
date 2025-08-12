@@ -1754,7 +1754,7 @@
               <div class="w-48 h-48 mx-auto bg-gray-50 rounded-xl flex items-center justify-center relative">
                 <!-- Real QR Code -->
                 <img v-if="selectedBotForQr?.status?.qr_code_path && selectedBotForQr.status.qr_code_path.split('/').length > 2" 
-                     :src="`http://localhost:8000/api/qr-code/${selectedBotForQr.status.qr_code_path.split('/')[2]}/qr.png`" 
+                     :src="`https://chatbot.soexplast.com/api/qr-code/${selectedBotForQr.status.qr_code_path.split('/')[2]}/qr.png`" 
                      alt="QR Code" 
                      class="w-44 h-44 object-contain"
                      @error="handleQrCodeError"

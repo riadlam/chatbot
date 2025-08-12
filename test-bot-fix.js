@@ -28,7 +28,7 @@ async function testBotFix() {
             // Test the keywords API
             console.log('\n🔍 Testing keywords API...');
             const axios = require('axios');
-            axios.get('http://localhost:8000/api/webhook/bot-keywords/2')
+            axios.get('https://chatbot.soexplast.com/api/webhook/bot-keywords/2')
                 .then(response => {
                     console.log('Keywords API response:', {
                         success: response.data.success,

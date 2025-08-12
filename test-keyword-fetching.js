@@ -7,7 +7,7 @@ async function testKeywordFetching() {
         // Test 1: Check if we can access the keywords endpoint
         console.log('1️⃣ Testing keywords endpoint...');
         try {
-            const keywordsResponse = await axios.get('http://localhost:8000/api/shops/1/bots/1/keywords', {
+            const keywordsResponse = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/1/keywords', {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -22,7 +22,7 @@ async function testKeywordFetching() {
         // Test 2: Check if we can access the messages endpoint
         console.log('\n2️⃣ Testing messages endpoint...');
         try {
-            const messagesResponse = await axios.get('http://localhost:8000/api/shops/1/bots/1/messages', {
+            const messagesResponse = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/1/messages', {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -37,7 +37,7 @@ async function testKeywordFetching() {
         // Test 3: Check if there are any bot_messages in the database
         console.log('\n3️⃣ Testing direct database check...');
         try {
-            const botMessagesResponse = await axios.get('http://localhost:8000/api/webhook/bot-messages/1', {
+            const botMessagesResponse = await axios.get('https://chatbot.soexplast.com/api/webhook/bot-messages/1', {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -52,7 +52,7 @@ async function testKeywordFetching() {
         // Test 4: Check if there are any bot_keywords in the database
         console.log('\n4️⃣ Testing bot keywords check...');
         try {
-            const botKeywordsResponse = await axios.get('http://localhost:8000/api/webhook/bot-keywords/1', {
+            const botKeywordsResponse = await axios.get('https://chatbot.soexplast.com/api/webhook/bot-keywords/1', {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'

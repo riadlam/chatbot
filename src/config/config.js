@@ -3,7 +3,7 @@ require('dotenv').config();
 module.exports = {
     // Laravel API Configuration
     laravel: {
-        baseUrl: process.env.LARAVEL_API_URL || 'http://localhost:8000/api',
+        baseUrl: process.env.LARAVEL_API_URL || 'https://chatbot.soexplast.com/api',
         timeout: 10000,
     },
 

@@ -12,7 +12,7 @@ async function testMessageSimulation() {
         // Test 2: Simulate sending a message with keyword "sam"
         console.log('\n2️⃣ Simulating message with keyword "sam"...');
         try {
-            const messageResponse = await axios.post('http://localhost:8000/api/webhook/message', {
+            const messageResponse = await axios.post('https://chatbot.soexplast.com/api/webhook/message', {
                 shop_id: 1,
                 whatsapp_number: '1234567890',
                 customer_name: 'Test User',
@@ -32,7 +32,7 @@ async function testMessageSimulation() {
         // Test 3: Check if bot can fetch keywords for processing
         console.log('\n3️⃣ Testing bot keyword fetching...');
         try {
-            const keywordsResponse = await axios.get('http://localhost:8000/api/webhook/bot-keywords/1');
+            const keywordsResponse = await axios.get('https://chatbot.soexplast.com/api/webhook/bot-keywords/1');
             console.log('✅ Bot keywords fetched:', keywordsResponse.data);
             
             // Check if "sam" keyword is found
@@ -62,7 +62,7 @@ async function testMessageSimulation() {
         console.log('3. The bot should respond with the linked message');
         console.log('');
         console.log('📱 QR Code Location:');
-        console.log('http://localhost:8000/storage/qr-codes/bot_1_1754524728295/qr.png');
+        console.log('https://chatbot.soexplast.com/storage/qr-codes/bot_1_1754524728295/qr.png');
         
     } catch (error) {
         console.error('❌ Error:', error.message);

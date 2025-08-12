@@ -6,7 +6,7 @@ async function testSimple() {
     try {
         // Step 1: Login to get token
         console.log('1️⃣ Logging in...');
-        const loginResponse = await axios.post('http://localhost:8000/api/auth/login', {
+        const loginResponse = await axios.post('https://chatbot.soexplast.com/api/auth/login', {
             email: 'test@example.com',
             password: 'password123'
         }, {
@@ -22,7 +22,7 @@ async function testSimple() {
         
         // Step 2: Test bot start
         console.log('\n2️⃣ Testing bot start...');
-        const startResponse = await axios.post('http://localhost:8000/api/shops/1/bots/1/start', {}, {
+        const startResponse = await axios.post('https://chatbot.soexplast.com/api/shops/1/bots/1/start', {}, {
             timeout: 20000,
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -35,7 +35,7 @@ async function testSimple() {
         
         // Step 3: Check status
         console.log('\n3️⃣ Checking status...');
-        const statusResponse = await axios.get('http://localhost:8000/api/shops/1/bots/1/status', {
+        const statusResponse = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/1/status', {
             timeout: 10000,
             headers: {
                 'Authorization': `Bearer ${token}`,

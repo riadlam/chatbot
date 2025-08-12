@@ -93,7 +93,7 @@ php artisan serve
 npm install
 
 # Create environment file
-echo "LARAVEL_API_URL=http://localhost:8000/api" > .env
+echo "LARAVEL_API_URL=https://chatbot.soexplast.com/api" > .env
 
 # Start the bot engine
 npm start
@@ -103,7 +103,7 @@ npm start
 
 ```bash
 # Check Laravel API health
-curl http://localhost:8000/api/shops
+curl https://chatbot.soexplast.com/api/shops
 
 # Check Node.js bot health
 curl http://localhost:3000/health
@@ -146,7 +146,7 @@ curl http://localhost:3000/health
 
 ```env
 # Laravel API
-LARAVEL_API_URL=http://localhost:8000/api
+LARAVEL_API_URL=https://chatbot.soexplast.com/api
 
 # Server
 PORT=3000
@@ -167,7 +167,7 @@ LOG_FILE=./logs/bot.log
 ### 1. Create a Shop
 
 ```bash
-curl -X POST http://localhost:8000/api/shops \
+curl -X POST https://chatbot.soexplast.com/api/shops \
   -H "Content-Type: application/json" \
   -d '{
     "name": "My Store",
@@ -179,7 +179,7 @@ curl -X POST http://localhost:8000/api/shops \
 ### 2. Add Keywords
 
 ```bash
-curl -X POST http://localhost:8000/api/shops/1/keywords \
+curl -X POST https://chatbot.soexplast.com/api/shops/1/keywords \
   -H "Content-Type: application/json" \
   -d '{
     "trigger_word": "hello",

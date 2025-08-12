@@ -1,17 +1,17 @@
 # Test Keyword API Endpoints
 
 # 1. First, get the user's shops to find shop ID
-curl -X GET "http://localhost:8000/api/shops" \
+curl -X GET "https://chatbot.soexplast.com/api/shops" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json"
 
 # 2. Get bots for the shop to find bot ID
-curl -X GET "http://localhost:8000/api/shops/1/bots" \
+curl -X GET "https://chatbot.soexplast.com/api/shops/1/bots" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json"
 
 # 3. Add keywords to a bot (replace shop_id and bot_id with real values)
-curl -X POST "http://localhost:8000/api/shops/1/bots/1/keywords" \
+curl -X POST "https://chatbot.soexplast.com/api/shops/1/bots/1/keywords" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json" \
   -d '{
@@ -20,12 +20,12 @@ curl -X POST "http://localhost:8000/api/shops/1/bots/1/keywords" \
   }'
 
 # 4. Get keywords for a bot
-curl -X GET "http://localhost:8000/api/shops/1/bots/1/keywords" \
+curl -X GET "https://chatbot.soexplast.com/api/shops/1/bots/1/keywords" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json"
 
 # 5. Remove a keyword from a bot
-curl -X DELETE "http://localhost:8000/api/shops/1/bots/1/keywords" \
+curl -X DELETE "https://chatbot.soexplast.com/api/shops/1/bots/1/keywords" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json" \
   -d '{
@@ -33,7 +33,7 @@ curl -X DELETE "http://localhost:8000/api/shops/1/bots/1/keywords" \
   }'
 
 # 6. Add a message to a bot
-curl -X POST "http://localhost:8000/api/shops/1/bots/1/messages" \
+curl -X POST "https://chatbot.soexplast.com/api/shops/1/bots/1/messages" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json" \
   -d '{
@@ -46,6 +46,6 @@ curl -X POST "http://localhost:8000/api/shops/1/bots/1/messages" \
   }'
 
 # 7. Get messages for a bot
-curl -X GET "http://localhost:8000/api/shops/1/bots/1/messages" \
+curl -X GET "https://chatbot.soexplast.com/api/shops/1/bots/1/messages" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE" \
   -H "Content-Type: application/json" 

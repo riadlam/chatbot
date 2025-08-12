@@ -6,7 +6,7 @@ async function testQrGeneration() {
     try {
         // Test 1: Check if Laravel API is accessible
         console.log('1️⃣ Testing Laravel API connection...');
-        const healthResponse = await axios.get('http://localhost:8000/api/health');
+        const healthResponse = await axios.get('https://chatbot.soexplast.com/api/health');
         console.log('✅ Laravel API is running:', healthResponse.data);
         
         // Test 2: Check if Node.js bot server is accessible
@@ -57,7 +57,7 @@ async function testQrGeneration() {
                             
                             // Test 5: Try to access QR code via Laravel API
                             console.log('\n5️⃣ Testing QR code access via Laravel API...');
-                            const qrCodeUrl = `http://localhost:8000/api/qr-code/${latestQrDir}/qr.png`;
+                            const qrCodeUrl = `https://chatbot.soexplast.com/api/qr-code/${latestQrDir}/qr.png`;
                             console.log('🔗 QR Code URL:', qrCodeUrl);
                             
                             try {

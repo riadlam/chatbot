@@ -45,7 +45,7 @@ async function testComprehensive() {
             await new Promise(resolve => setTimeout(resolve, 2000));
             
             try {
-                const statusResponse = await axios.get('http://localhost:8000/api/shops/1/bots/1/status', {
+                const statusResponse = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/1/status', {
                     timeout: 5000
                 });
                 
@@ -77,7 +77,7 @@ async function testComprehensive() {
         if (qrGenerated) {
             console.log('\n3️⃣ Testing QR Code Validation...');
             try {
-                const qrResponse = await axios.get('http://localhost:8000/api/shops/1/bots/1/qr-code', {
+                const qrResponse = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/1/qr-code', {
                     timeout: 5000
                 });
                 
@@ -106,7 +106,7 @@ async function testComprehensive() {
         // Test 4: Status Updates
         console.log('\n4️⃣ Testing Status Updates...');
         try {
-            const finalStatus = await axios.get('http://localhost:8000/api/shops/1/bots/1/status', {
+            const finalStatus = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/1/status', {
                 timeout: 5000
             });
             
@@ -126,7 +126,7 @@ async function testComprehensive() {
         console.log('\n5️⃣ Testing Error Handling...');
         try {
             // Test invalid bot ID
-            const invalidResponse = await axios.get('http://localhost:8000/api/shops/1/bots/999/status', {
+            const invalidResponse = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/999/status', {
                 timeout: 5000
             });
         } catch (error) {

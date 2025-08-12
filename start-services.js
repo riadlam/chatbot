@@ -61,7 +61,7 @@ if (!service || service === 'all') {
     console.log('  node start-services.js bot-server - Start Node.js bot server only');
     console.log('  node start-services.js frontend - Start Vue.js frontend only');
     console.log('\nServices:');
-    console.log('  - Laravel Backend: http://localhost:8000');
+    console.log('  - Laravel Backend: https://chatbot.soexplast.com');
     console.log('  - Node.js Bot Server: http://localhost:3000');
     console.log('  - Vue.js Frontend: http://localhost:5173');
 }

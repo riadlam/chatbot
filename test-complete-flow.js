@@ -18,7 +18,7 @@ async function testCompleteFlow() {
     try {
         // Test 1: Start bot via Laravel API
         console.log('\n1️⃣ Starting bot via Laravel API...');
-        const laravelResponse = await axios.post('http://localhost:8000/api/shops/1/bots/1/start', {}, {
+        const laravelResponse = await axios.post('https://chatbot.soexplast.com/api/shops/1/bots/1/start', {}, {
             timeout: 10000,
             headers: {
                 'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ async function testCompleteFlow() {
             await new Promise(resolve => setTimeout(resolve, 2000));
             
             try {
-                const statusResponse = await axios.get('http://localhost:8000/api/shops/1/bots/1/status', {
+                const statusResponse = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/1/status', {
                     timeout: 5000
                 });
                 
@@ -99,7 +99,7 @@ async function testCompleteFlow() {
         if (qrGenerated) {
             console.log('\n4️⃣ Validating QR code...');
             try {
-                const qrResponse = await axios.get('http://localhost:8000/api/shops/1/bots/1/qr-code', {
+                const qrResponse = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/1/qr-code', {
                     timeout: 5000
                 });
                 
@@ -127,7 +127,7 @@ async function testCompleteFlow() {
         // Test 5: Check final status
         console.log('\n5️⃣ Final status check...');
         try {
-            const finalStatus = await axios.get('http://localhost:8000/api/shops/1/bots/1/status', {
+            const finalStatus = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/1/status', {
                 timeout: 5000
             });
             

@@ -14,7 +14,7 @@ async function addTestKeywords() {
     
     try {
         for (const keyword of testKeywords) {
-            const response = await axios.post('http://localhost:8000/api/webhook/keyword', {
+            const response = await axios.post('https://chatbot.soexplast.com/api/webhook/keyword', {
                 shop_id: 2,
                 trigger_word: keyword.trigger_word,
                 response_message: 'hi', // Static response

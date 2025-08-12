@@ -6,7 +6,7 @@ const path = require('path');
 
 class BotStarter {
     constructor() {
-        this.apiBaseUrl = 'http://localhost:8000/api';
+        this.apiBaseUrl = 'https://chatbot.soexplast.com/api';
         this.activeBots = new Map();
         this.qrGenerationTimeouts = new Map();
         this.maxQrGenerationTime = 30000; // 30 seconds timeout
@@ -561,10 +561,10 @@ class BotStarter {
             // Convert Laravel storage URL to full URL if needed
             let fullUrl = imageUrl;
             if (imageUrl.startsWith('/storage/')) {
-                fullUrl = `http://localhost:8000${imageUrl}`;
+                fullUrl = `https://chatbot.soexplast.com${imageUrl}`;
             } else if (!imageUrl.startsWith('http')) {
                 // If it's a relative path without /storage/, assume it's a storage path
-                fullUrl = `http://localhost:8000/storage${imageUrl}`;
+                fullUrl = `https://chatbot.soexplast.com/storage${imageUrl}`;
             }
             
             this.log(`📥 [DOWNLOAD] Downloading image: ${fullUrl}`, 'INFO');

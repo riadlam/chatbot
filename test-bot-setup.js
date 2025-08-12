@@ -10,7 +10,7 @@ async function testBotSetup() {
         const botHealth = await axios.get('http://localhost:3000/health');
         console.log('✅ Bot server is running:', botHealth.data.status);
         
-        const laravelHealth = await axios.get('http://localhost:8000/api/health');
+        const laravelHealth = await axios.get('https://chatbot.soexplast.com/api/health');
         console.log('✅ Laravel API is running:', laravelHealth.data.status);
         
         // Test 2: Start the bot
@@ -31,12 +31,12 @@ async function testBotSetup() {
         console.log('\n4️⃣ Checking QR code...');
         
         try {
-            const qrResponse = await axios.get('http://localhost:8000/api/shops/1/bots/1/qr-code');
+            const qrResponse = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/1/qr-code');
             console.log('✅ QR code status:', qrResponse.data);
             
             if (qrResponse.data.qr_code_path) {
                 console.log('📱 QR code path:', qrResponse.data.qr_code_path);
-                console.log('🔗 QR code URL: http://localhost:8000/' + qrResponse.data.qr_code_path);
+                console.log('🔗 QR code URL: https://chatbot.soexplast.com/' + qrResponse.data.qr_code_path);
             }
         } catch (error) {
             console.log('❌ QR code not ready yet:', error.response?.status);
@@ -57,7 +57,7 @@ async function testBotSetup() {
         console.log('');
         console.log('🔧 Direct API Method:');
         console.log('You can also add keywords directly via API:');
-        console.log('POST http://localhost:8000/api/shops/1/bots/1/keywords');
+        console.log('POST https://chatbot.soexplast.com/api/shops/1/bots/1/keywords');
         console.log('Body: {');
         console.log('  "type": "text",');
         console.log('  "message": {');
@@ -70,7 +70,7 @@ async function testBotSetup() {
         console.log('\n6️⃣ Current Bot Status:');
         
         try {
-            const statusResponse = await axios.get('http://localhost:8000/api/shops/1/bots/1/status');
+            const statusResponse = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/1/status');
             console.log('✅ Bot status:', statusResponse.data);
         } catch (error) {
             console.log('❌ Could not get bot status:', error.response?.status);

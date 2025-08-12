@@ -10,7 +10,7 @@ async function testWithLogging() {
         // Step 1: Check if Laravel is running
         console.log('\n1️⃣ Checking Laravel Backend...');
         try {
-            const laravelHealth = await axios.get('http://localhost:8000/api/shops/1/bots/1', {
+            const laravelHealth = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/1', {
                 timeout: 5000
             });
             console.log('✅ Laravel backend is accessible');
@@ -38,7 +38,7 @@ async function testWithLogging() {
         console.log('\n3️⃣ Starting bot via Laravel API...');
         console.log('   This will trigger the complete flow...');
         
-        const laravelResponse = await axios.post('http://localhost:8000/api/shops/1/bots/1/start', {}, {
+        const laravelResponse = await axios.post('https://chatbot.soexplast.com/api/shops/1/bots/1/start', {}, {
             timeout: 15000,
             headers: {
                 'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ async function testWithLogging() {
             await new Promise(resolve => setTimeout(resolve, 2000));
             
             try {
-                const statusResponse = await axios.get('http://localhost:8000/api/shops/1/bots/1/status', {
+                const statusResponse = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/1/status', {
                     timeout: 5000
                 });
                 
@@ -88,7 +88,7 @@ async function testWithLogging() {
         // Step 5: Final status check
         console.log('\n5️⃣ Final status check...');
         try {
-            const finalStatus = await axios.get('http://localhost:8000/api/shops/1/bots/1/status', {
+            const finalStatus = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/1/status', {
                 timeout: 5000
             });
             
@@ -112,7 +112,7 @@ async function testWithLogging() {
         console.error('Stack trace:', error.stack);
         
         console.log('\n🔧 Debugging Steps:');
-        console.log('1. Check if Laravel is running: http://localhost:8000');
+        console.log('1. Check if Laravel is running: https://chatbot.soexplast.com');
         console.log('2. Check if Node.js server is running: http://localhost:3000/health');
         console.log('3. Check Laravel logs: php artisan logs:tail');
         console.log('4. Check Node.js server console for errors');

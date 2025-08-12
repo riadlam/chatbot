@@ -6,7 +6,7 @@ async function testFrontendConnection() {
     try {
         // Test 1: Check if Laravel API is accessible
         console.log('1️⃣ Testing Laravel API connection...');
-        const laravelHealth = await axios.get('http://localhost:8000/api/health');
+        const laravelHealth = await axios.get('https://chatbot.soexplast.com/api/health');
         console.log('✅ Laravel API is running:', laravelHealth.data);
         
         // Test 2: Check if Node.js bot server is accessible
@@ -17,7 +17,7 @@ async function testFrontendConnection() {
         // Test 3: Simulate frontend calling Laravel to start bot
         console.log('\n3️⃣ Testing Laravel bot start endpoint...');
         try {
-            const startResponse = await axios.post('http://localhost:8000/api/shops/1/bots/1/start', {}, {
+            const startResponse = await axios.post('https://chatbot.soexplast.com/api/shops/1/bots/1/start', {}, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -32,14 +32,14 @@ async function testFrontendConnection() {
                 
                 // Test 4: Check bot status
                 console.log('\n4️⃣ Testing bot status endpoint...');
-                const statusResponse = await axios.get('http://localhost:8000/api/shops/1/bots/1/status');
+                const statusResponse = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/1/status');
                 console.log('✅ Bot status response:', statusResponse.data);
                 
                 // Test 5: Wait a bit and check for QR code
                 console.log('\n5️⃣ Waiting for QR code generation...');
                 await new Promise(resolve => setTimeout(resolve, 5000));
                 
-                const statusResponse2 = await axios.get('http://localhost:8000/api/shops/1/bots/1/status');
+                const statusResponse2 = await axios.get('https://chatbot.soexplast.com/api/shops/1/bots/1/status');
                 console.log('✅ Bot status after 5 seconds:', statusResponse2.data);
                 
             } else {

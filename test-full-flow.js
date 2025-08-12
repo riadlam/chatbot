@@ -1,7 +1,7 @@
 // Test script to verify the full flow
 const axios = require('axios');
 
-const API_BASE = 'http://localhost:8000/api';
+const API_BASE = 'https://chatbot.soexplast.com/api';
 
 async function testFullFlow() {
     try {

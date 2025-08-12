@@ -1,7 +1,7 @@
 # Bot API Testing Commands for Postman
 
 ## 1. Create a Shop First (if needed)
-curl -X POST http://localhost:8000/api/shops \
+curl -X POST https://chatbot.soexplast.com/api/shops \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
   -d '{
@@ -11,7 +11,7 @@ curl -X POST http://localhost:8000/api/shops \
   }'
 
 ## 2. Create a Bot
-curl -X POST http://localhost:8000/api/shops/1/bots \
+curl -X POST https://chatbot.soexplast.com/api/shops/1/bots \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
   -d '{
@@ -21,15 +21,15 @@ curl -X POST http://localhost:8000/api/shops/1/bots \
   }'
 
 ## 3. Get All Bots for a Shop
-curl -X GET http://localhost:8000/api/shops/1/bots \
+curl -X GET https://chatbot.soexplast.com/api/shops/1/bots \
   -H "Accept: application/json"
 
 ## 4. Get Specific Bot
-curl -X GET http://localhost:8000/api/shops/1/bots/1 \
+curl -X GET https://chatbot.soexplast.com/api/shops/1/bots/1 \
   -H "Accept: application/json"
 
 ## 5. Add Keyword to Bot
-curl -X POST http://localhost:8000/api/shops/1/bots/1/keywords \
+curl -X POST https://chatbot.soexplast.com/api/shops/1/bots/1/keywords \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
   -d '{
@@ -38,11 +38,11 @@ curl -X POST http://localhost:8000/api/shops/1/bots/1/keywords \
   }'
 
 ## 6. Get Bot Keywords
-curl -X GET http://localhost:8000/api/shops/1/bots/1/keywords \
+curl -X GET https://chatbot.soexplast.com/api/shops/1/bots/1/keywords \
   -H "Accept: application/json"
 
 ## 7. Remove Keyword from Bot
-curl -X DELETE http://localhost:8000/api/shops/1/bots/1/keywords \
+curl -X DELETE https://chatbot.soexplast.com/api/shops/1/bots/1/keywords \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
   -d '{
@@ -50,7 +50,7 @@ curl -X DELETE http://localhost:8000/api/shops/1/bots/1/keywords \
   }'
 
 ## 8. Add Message to Bot
-curl -X POST http://localhost:8000/api/shops/1/bots/1/messages \
+curl -X POST https://chatbot.soexplast.com/api/shops/1/bots/1/messages \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
   -d '{
@@ -63,15 +63,15 @@ curl -X POST http://localhost:8000/api/shops/1/bots/1/messages \
   }'
 
 ## 9. Get Bot Messages
-curl -X GET http://localhost:8000/api/shops/1/bots/1/messages \
+curl -X GET https://chatbot.soexplast.com/api/shops/1/bots/1/messages \
   -H "Accept: application/json"
 
 ## 10. Toggle Bot Status
-curl -X POST http://localhost:8000/api/shops/1/bots/1/toggle-status \
+curl -X POST https://chatbot.soexplast.com/api/shops/1/bots/1/toggle-status \
   -H "Accept: application/json"
 
 ## 11. Update Bot
-curl -X PUT http://localhost:8000/api/shops/1/bots/1 \
+curl -X PUT https://chatbot.soexplast.com/api/shops/1/bots/1 \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
   -d '{
@@ -81,7 +81,7 @@ curl -X PUT http://localhost:8000/api/shops/1/bots/1 \
   }'
 
 ## 12. Delete Bot
-curl -X DELETE http://localhost:8000/api/shops/1/bots/1 \
+curl -X DELETE https://chatbot.soexplast.com/api/shops/1/bots/1 \
   -H "Accept: application/json"
 
 # Expected Bot Structure:

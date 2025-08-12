@@ -1,0 +1,15 @@
+[Unit]
+Description=Laravel API Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/soexplast/public_html/chatwp/laravel-backend
+ExecStart=/usr/bin/php artisan serve --host=0.0.0.0 --port=8000
+Restart=always
+RestartSec=10
+Environment=APP_ENV=production
+
+[Install]
+WantedBy=multi-user.target

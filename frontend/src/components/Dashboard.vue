@@ -2304,14 +2304,21 @@ export default {
       
       console.log('🔍 [DEBUG] QR Path received:', qrPath);
       
-      // Extract session ID from path like "qr-codes/bot_4_1755042433824/qr.png"
+      // Extract session ID from path like "storage/qr-codes/bot_4_1755042433824/qr.png"
       const parts = qrPath.split('/');
       console.log('🔍 [DEBUG] Path parts:', parts);
       
-      if (parts.length >= 2) {
-        const sessionId = parts[1];
+      if (parts.length >= 3) {
+        // For "storage/qr-codes/bot_4_1755042433824/qr.png"
+        // parts[0] = "storage", parts[1] = "qr-codes", parts[2] = "bot_4_1755042433824"
+        const sessionId = parts[2];
         console.log('🔍 [DEBUG] Extracted session ID:', sessionId);
-        return sessionId; // Return the session ID part
+        return sessionId;
+      } else if (parts.length >= 2) {
+        // Fallback for "qr-codes/bot_4_1755042433824/qr.png"
+        const sessionId = parts[1];
+        console.log('🔍 [DEBUG] Extracted session ID (fallback):', sessionId);
+        return sessionId;
       }
       return null;
     },

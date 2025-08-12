@@ -1,0 +1,18 @@
+[Unit]
+Description=WhatsApp Bot Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/soexplast/public_html/chatwp
+ExecStart=/usr/bin/node src/index.js
+Restart=always
+RestartSec=10
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=HOST=0.0.0.0
+Environment=LARAVEL_API_URL=https://chatbot.soexplast.com/api
+
+[Install]
+WantedBy=multi-user.target

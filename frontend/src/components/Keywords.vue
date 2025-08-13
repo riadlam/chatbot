@@ -1133,7 +1133,7 @@ export default {
           formData.append('image', imageData.file);
           
           // Upload to Laravel backend
-          const response = await fetch('https://chatbot.soexplast.com/api/upload-image', {
+          const response = await fetch('http://197.140.142.101:8000/api/upload-image', {
             method: 'POST',
             body: formData,
             headers: {

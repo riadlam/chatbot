@@ -517,30 +517,11 @@ class BotStarter {
                 imageCount: images.length
             });
             
-            // Show typing indicator before the delay (with error handling)
-            try {
-                this.log(`⌨️ [RESPONSE] Showing typing indicator...`, 'INFO', botId);
-                if (client.sendPresenceUpdate) {
-                    await client.sendPresenceUpdate('composing', originalMessage.from);
-                }
-            } catch (error) {
-                this.log(`⚠️ [RESPONSE] Typing indicator failed: ${error.message}`, 'WARN', botId);
-            }
-            
             // Wait for the specified duration before sending the response
             const startTime = Date.now();
             this.log(`⏱️ [RESPONSE] Starting ${duration} second delay...`, 'INFO', botId);
             
             await new Promise(resolve => setTimeout(resolve, duration * 1000));
-            
-            // Stop typing indicator (with error handling)
-            try {
-                if (client.sendPresenceUpdate) {
-                    await client.sendPresenceUpdate('paused', originalMessage.from);
-                }
-            } catch (error) {
-                this.log(`⚠️ [RESPONSE] Stop typing indicator failed: ${error.message}`, 'WARN', botId);
-            }
             
             const endTime = Date.now();
             const actualDelay = Math.round((endTime - startTime) / 1000);

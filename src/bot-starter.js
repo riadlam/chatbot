@@ -41,17 +41,22 @@ class BotStarter {
                 existingBots: Array.from(this.activeBots.keys())
             });
 
-            // Check if bot is already running
+            // Check if bot is already running - STOP the existing one first
             if (this.activeBots.has(botId)) {
-                this.log(`⚠️ [START_BOT] Bot is already running`, 'WARN', botId, {
+                this.log(`⚠️ [START_BOT] Bot is already running, stopping existing session`, 'WARN', botId, {
                     botId,
                     existingSessionId: this.activeBots.get(botId)?.sessionId || 'unknown'
                 });
-                return { success: true, sessionId: `existing_${botId}`, alreadyRunning: true };
+                
+                // Stop the existing bot
+                await this.stopBot(botId);
+                
+                // Wait a moment for cleanup
+                await new Promise(resolve => setTimeout(resolve, 2000));
             }
 
-            // Clean up any existing session data for this bot
-            await this.cleanupOldSessions(botId);
+            // Don't clean up old sessions - let them be
+            this.log(`ℹ️ [START_BOT] Skipping session cleanup for bot ${botId}`, 'INFO', botId);
 
             // Create session in Laravel database
             await this.createSession(shopId, botId, sessionId);
@@ -166,23 +171,9 @@ class BotStarter {
                 
                 await this.updateSessionStatus(shopId, botId, 'disconnected', null, reason);
                 
-                // Don't immediately delete from activeBots - let it try to reconnect
-                // Only delete if it's a permanent disconnection
-                if (reason === 'NAVIGATION' || reason === 'CONNECTION_LOST') {
-                    this.log(`🔄 [DISCONNECT] Attempting to reconnect bot ${botId}`, 'INFO', botId);
-                    // Try to reinitialize the client
-                    setTimeout(async () => {
-                        try {
-                            await client.initialize();
-                            this.log(`✅ [RECONNECT] Bot ${botId} reconnected successfully`, 'INFO', botId);
-                        } catch (error) {
-                            this.log(`❌ [RECONNECT] Failed to reconnect bot ${botId}: ${error.message}`, 'ERROR', botId);
-                            this.activeBots.delete(botId);
-                        }
-                    }, 5000); // Wait 5 seconds before reconnecting
-                } else {
+                // Remove from active bots - NO AUTO-RESTART
+                this.log(`🗑️ [DISCONNECT] Removing bot ${botId} from active bots - no auto-restart`, 'INFO', botId);
                 this.activeBots.delete(botId);
-                }
             });
 
             client.on('auth_failure', async (message) => {

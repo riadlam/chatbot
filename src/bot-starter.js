@@ -577,7 +577,9 @@ class BotStarter {
             } else if (imageUrl.includes('/storage/')) {
                 // Handle full URLs that contain /storage/ path
                 // Extract filename from http://domain/storage/images/filename.ext
-                const filename = imageUrl.split('/storage/')[1];
+                const pathAfterStorage = imageUrl.split('/storage/')[1];
+                // Extract just the filename from the path
+                const filename = pathAfterStorage.split('/').pop();
                 fullUrl = `http://197.140.142.101:8000/api/images/${filename}`;
             } else if (!imageUrl.startsWith('http')) {
                 // If it's a relative path without /storage/, assume it's a storage path

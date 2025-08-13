@@ -27,10 +27,10 @@ class ImageUploadController extends Controller
             $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
             
             // Store the file in the public/images directory
-            $path = $file->storeAs('public/images', $filename, 'public');
+            $path = $file->storeAs('images', $filename, 'public');
             
-            // Generate the public URL
-            $url = Storage::url($path);
+            // Generate the public URL (without the extra 'public' in the path)
+            $url = '/storage/' . $path;
             
             return response()->json([
                 'success' => true,

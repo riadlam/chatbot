@@ -569,15 +569,24 @@ class BotStarter {
         try {
             // Convert Laravel storage URL to full URL if needed
             let fullUrl = imageUrl;
+            
             if (imageUrl.startsWith('/storage/')) {
                 // Extract filename from /storage/images/filename.ext
                 const filename = imageUrl.replace('/storage/images/', '');
+                fullUrl = `http://197.140.142.101:8000/api/images/${filename}`;
+            } else if (imageUrl.includes('/storage/')) {
+                // Handle full URLs that contain /storage/ path
+                // Extract filename from http://domain/storage/images/filename.ext
+                const filename = imageUrl.split('/storage/')[1];
                 fullUrl = `http://197.140.142.101:8000/api/images/${filename}`;
             } else if (!imageUrl.startsWith('http')) {
                 // If it's a relative path without /storage/, assume it's a storage path
                 const filename = imageUrl.replace('images/', '');
                 fullUrl = `http://197.140.142.101:8000/api/images/${filename}`;
             }
+            
+            // Debug: Log the URL conversion
+            this.log(`🔍 [DOWNLOAD] URL conversion: ${imageUrl} → ${fullUrl}`, 'DEBUG');
             
             this.log(`📥 [DOWNLOAD] Downloading image: ${fullUrl}`, 'INFO');
             

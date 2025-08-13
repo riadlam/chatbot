@@ -490,10 +490,22 @@ class BotStarter {
             }
             const client = botData.client;
 
+            // Debug: Log the entire keywordData to see what we're working with
+            this.log(`🔍 [RESPONSE] Full keywordData:`, 'DEBUG', botId, keywordData);
+
             // Get the response message and type
             const responseMessage = keywordData.response_message || keywordData.message?.message || keywordData.response || 'Thank you for your message!';
             const messageType = keywordData.message_type || keywordData.message?.type || 'text';
             const images = keywordData.images || [];
+            
+            // Debug: Log the extracted values
+            this.log(`🔍 [RESPONSE] Extracted values:`, 'DEBUG', botId, {
+                responseMessage,
+                messageType,
+                images,
+                imagesLength: images.length,
+                hasImages: images.length > 0
+            });
             
             // Get duration from keyword data (default to 8 seconds if not specified)
             const duration = keywordData.duration || 8;
@@ -521,10 +533,15 @@ class BotStarter {
                 actualDelay: actualDelay
             });
             
+            // Debug: Log the condition check
+            this.log(`🔍 [RESPONSE] Condition check: messageType=${messageType}, images.length=${images.length}`, 'DEBUG', botId);
+            
             if (messageType === 'image' && images.length > 0) {
+                this.log(`🖼️ [RESPONSE] Sending image response with ${images.length} images`, 'INFO', botId);
                 // Send images first
                 for (const imageUrl of images) {
                     try {
+                        this.log(`🖼️ [RESPONSE] Processing image: ${imageUrl}`, 'DEBUG', botId);
                         // Download the image and send it
                         const media = await this.downloadImage(imageUrl);
                         await client.sendMessage(originalMessage.from, media, { caption: responseMessage });
@@ -536,6 +553,7 @@ class BotStarter {
                     }
                 }
             } else {
+                this.log(`📝 [RESPONSE] Sending text response (messageType: ${messageType}, hasImages: ${images.length > 0})`, 'INFO', botId);
                 // Send text message
                 await client.sendMessage(originalMessage.from, responseMessage);
             }

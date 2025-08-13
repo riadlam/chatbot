@@ -159,6 +159,20 @@ Route::get('webhook/bot-keywords/{botId}', function ($botId) {
         // Get all keywords for this bot with their associated messages
         $keywords = $bot->keywords()->with('message')->get();
         
+        // Debug: Log the raw data
+        \Log::info("🔍 [WEBHOOK_KEYWORDS] Raw keyword data for bot {$botId}", [
+            'keywords_count' => $keywords->count(),
+            'sample_keyword' => $keywords->first() ? [
+                'id' => $keywords->first()->id,
+                'keyword' => $keywords->first()->keyword,
+                'message_id' => $keywords->first()->message_id,
+                'message_raw' => $keywords->first()->message,
+                'message_type' => $keywords->first()->message->type ?? 'NOT_SET',
+                'images_raw' => $keywords->first()->message->images ?? 'NOT_SET',
+                'images_decoded' => $keywords->first()->message->getImages() ?? 'NOT_SET'
+            ] : 'NO_KEYWORDS'
+        ]);
+        
         return response()->json([
             'success' => true,
             'data' => $keywords->map(function ($keyword) {

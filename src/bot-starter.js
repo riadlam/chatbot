@@ -517,11 +517,18 @@ class BotStarter {
                 imageCount: images.length
             });
             
+            // Show typing indicator before the delay
+            this.log(`⌨️ [RESPONSE] Showing typing indicator...`, 'INFO', botId);
+            await client.sendPresenceUpdate('composing', originalMessage.from);
+            
             // Wait for the specified duration before sending the response
             const startTime = Date.now();
             this.log(`⏱️ [RESPONSE] Starting ${duration} second delay...`, 'INFO', botId);
             
             await new Promise(resolve => setTimeout(resolve, duration * 1000));
+            
+            // Stop typing indicator
+            await client.sendPresenceUpdate('paused', originalMessage.from);
             
             const endTime = Date.now();
             const actualDelay = Math.round((endTime - startTime) / 1000);

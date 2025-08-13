@@ -68,6 +68,17 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 });
 
+// Image serving route (NO AUTHENTICATION)
+Route::get('images/{filename}', function ($filename) {
+    $path = storage_path('app/public/images/' . $filename);
+    
+    if (!file_exists($path)) {
+        abort(404, 'Image not found');
+    }
+    
+    return response()->file($path);
+});
+
 // Webhook endpoints (NO AUTHENTICATION - called by Node.js bot server)
 Route::post('webhook/message', function (Request $request) {
     // This endpoint will receive messages from the Node.js bot

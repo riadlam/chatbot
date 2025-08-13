@@ -511,8 +511,18 @@ class WhatsAppBot {
             switch (messageType.toLowerCase()) {
                 case 'image':
                     if (messageData.url) {
+                        // Convert Laravel storage URL to working API endpoint
+                        let mediaUrl = messageData.url;
+                        if (messageData.url.startsWith('/storage/')) {
+                            const filename = messageData.url.replace('/storage/images/', '');
+                            mediaUrl = `http://197.140.142.101:8000/api/images/${filename}`;
+                        } else if (!messageData.url.startsWith('http')) {
+                            const filename = messageData.url.replace('images/', '');
+                            mediaUrl = `http://197.140.142.101:8000/api/images/${filename}`;
+                        }
+                        
                         await originalMessage.reply('', { 
-                            media: messageData.url, 
+                            media: mediaUrl, 
                             caption: messageData.caption || '',
                             sendMediaAsDocument: messageData.as_document || false
                         });
@@ -522,8 +532,18 @@ class WhatsAppBot {
                     
                 case 'document':
                     if (messageData.url) {
+                        // Convert Laravel storage URL to working API endpoint
+                        let mediaUrl = messageData.url;
+                        if (messageData.url.startsWith('/storage/')) {
+                            const filename = messageData.url.replace('/storage/documents/', '');
+                            mediaUrl = `http://197.140.142.101:8000/api/documents/${filename}`;
+                        } else if (!messageData.url.startsWith('http')) {
+                            const filename = messageData.url.replace('documents/', '');
+                            mediaUrl = `http://197.140.142.101:8000/api/documents/${filename}`;
+                        }
+                        
                         await originalMessage.reply('', { 
-                            media: messageData.url, 
+                            media: mediaUrl, 
                             filename: messageData.filename || 'document.pdf', 
                             caption: messageData.caption || '',
                             sendMediaAsDocument: true

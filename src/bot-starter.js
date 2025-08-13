@@ -552,10 +552,13 @@ class BotStarter {
             // Convert Laravel storage URL to full URL if needed
             let fullUrl = imageUrl;
             if (imageUrl.startsWith('/storage/')) {
-                fullUrl = `https://chatbot.soexplast.com${imageUrl}`;
+                // Extract filename from /storage/images/filename.ext
+                const filename = imageUrl.replace('/storage/images/', '');
+                fullUrl = `http://197.140.142.101:8000/api/images/${filename}`;
             } else if (!imageUrl.startsWith('http')) {
                 // If it's a relative path without /storage/, assume it's a storage path
-                fullUrl = `https://chatbot.soexplast.com/storage${imageUrl}`;
+                const filename = imageUrl.replace('images/', '');
+                fullUrl = `http://197.140.142.101:8000/api/images/${filename}`;
             }
             
             this.log(`📥 [DOWNLOAD] Downloading image: ${fullUrl}`, 'INFO');

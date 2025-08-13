@@ -79,6 +79,17 @@ Route::get('images/{filename}', function ($filename) {
     return response()->file($path);
 });
 
+// Document serving route (NO AUTHENTICATION)
+Route::get('documents/{filename}', function ($filename) {
+    $path = storage_path('app/public/documents/' . $filename);
+    
+    if (!file_exists($path)) {
+        abort(404, 'Document not found');
+    }
+    
+    return response()->file($path);
+});
+
 // Webhook endpoints (NO AUTHENTICATION - called by Node.js bot server)
 Route::post('webhook/message', function (Request $request) {
     // This endpoint will receive messages from the Node.js bot

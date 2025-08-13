@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://app.soexplast.com', 'https://chatbot.soexplast.com', 'http://localhost:5173', 'http://197.140.142.101:8000'],
+    'allowed_origins' => ['https://app.soexplast.com', 'https://chatbot.soexplast.com', 'http://localhost:5173'],
 
     'allowed_origins_patterns' => [],
 
